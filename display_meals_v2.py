@@ -19,15 +19,20 @@ menu = {
 }
 """Iterating through all of the menu items printing 
 the Menu name then all of the items and their prices"""
-while True:
-    input_combo = input("What combo do you want to display: ")
+
+def display_menu(menu_, combo_input_):
     found = False
+    display_string = ""
     for menu_name, menu_items in menu.items():
-        if menu_name.lower() == input_combo.lower():
+        if menu_name.lower() == combo_input.lower():
             found = True
+            display_string = menu_name
             print(f"{menu_name}:")
             for food, price in menu_items.items():
                 print(f"{food}: {price}")
             print()
     if found is False:
         print(f"No combo found in menu for {input_combo}")  
+
+combo_input = input("What combo do you want to display: ")
+display_menu(menu, combo_input)
