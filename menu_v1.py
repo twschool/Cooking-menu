@@ -12,6 +12,7 @@ super_ = [["Cheeseburger", 6.69],
           ["Fries", 1.00],
           ["Smoothies", 2.00]
          ]
+    
 
 # Print all food and prices off the value menu
 print("Value: ")

@@ -23,11 +23,10 @@ the Menu name then all of the items and their prices"""
 def display_menu(menu_, combo_input_):
     found = False
     display_string = ""
-    for menu_name, menu_items in menu.items():
+    for menu_name, menu_items in menu_.items():
         if menu_name.lower() == combo_input.lower():
             found = True
-            display_string = menu_name
-            print(f"{menu_name}:")
+            display_string = display_string + f"{menu_name}:"
             for food, price in menu_items.items():
                 print(f"{food}: {price}")
             print()
