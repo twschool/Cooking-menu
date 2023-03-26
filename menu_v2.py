@@ -4,7 +4,7 @@ menu = {
     "Value": {
         "Beef burger": 5.69,
         "Fries": 1.00,
-        "Fizzy drink": 1.00
+            "Fizzy drink": 1.00
     },
     "Cheezy": {
         "Cheeseburger": 6.69,
