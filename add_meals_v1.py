@@ -27,6 +27,7 @@ msg = "Please enter information for you new combo"
 title = "Combo data entry"
 fields_ = ["Enter combo name"]
 
+
 for i in range(1, (how_many) + 1):
     fields_.append(f"Item {i} name")
     fields_.append(f"Item {i} price")
@@ -43,7 +44,6 @@ for i in range(0, len(combo_list), 2):
 
 while True:
     done = eg.buttonbox(choices=["Yes", "No"])
-sorted_combo = []
 
 
 
