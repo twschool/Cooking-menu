@@ -1,4 +1,4 @@
-"""add meals v1 First version of add meals module"""
+"""add meals v2 Second version of add meals module"""
 import easygui as eg
 menu = {
     "Value": {
@@ -22,7 +22,7 @@ menu = {
 def add_meals(menu_):
     try:
         how_many = int(eg.enterbox(msg = "How many items do you want to add?\nPress enter for default of 3"))
-    except ValueError():
+    except ValueError:
         how_many = 3
 
     msg = "Please enter information for you new combo"
@@ -36,12 +36,13 @@ def add_meals(menu_):
     sorted_combo = []
     msg_ = "Press OK if you are happy with these values or press cancel to abandon adding this list"
     raw_combo_list = eg.multenterbox(fields=fields_,msg=msg_, values=raw_combo_list)
+    print(f"Raw combo list: {raw_combo_list}")
     if sorted_combo is None:
         print("Add combo abandoned")
         return [False]
     else:
         # Seperates the combo list to be a sorted list inside of a list so its easier to iterate through
-        combo_name = raw_combo_list.pop(raw_combo_list[0])
+        combo_name = raw_combo_list.pop(0)
         for i in range(0, len(raw_combo_list), 2):
             sorted_combo.append([raw_combo_list[i], raw_combo_list[i+1]])
         new_combo_dictionary = {}
