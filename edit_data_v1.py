@@ -40,8 +40,14 @@ while True:
         continue
     
     enterbox_values = [edit_combo]
+    enterbox_field = []
+    enterbox_values
+    
     for item in dict_edit.items():
+        """Add the existing values to the enterbox so the values
+        are filled in automatically and can be easily edited"""
         enterbox_values.append(item)
         enterbox_values.append(dict_edit[item])
 
-        
+
+
