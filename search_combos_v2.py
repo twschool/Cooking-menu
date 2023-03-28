@@ -18,13 +18,14 @@ menu = {
     }
 }
 
-def search_combo(seach_string_):
+def search_combo(search_string_):
     try:
         search_result = menu[search_string_]
         return search_result
     except KeyError:
-        return ""
+        return "Invalid"
 
 
 search_string = input("Search: ")
-search_combo(search_string)
+output = search_combo(search_string)
+print(output)
