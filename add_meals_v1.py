@@ -20,7 +20,7 @@ menu_ = {
 
 try:
     how_many = int(eg.enterbox(msg = "How many items do you want to add?\nPress enter for default of 3"))
-except ValueError:
+except ValueError():
     how_many = 3
 
 msg = "Please enter information for you new combo"
@@ -47,8 +47,3 @@ while True:
 
 
 print(sorted_combo)
-
-if (fsf) {
-    system.println("Hi")
-}
-
