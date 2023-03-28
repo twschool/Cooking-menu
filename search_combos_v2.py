@@ -25,7 +25,7 @@ def search_combo(search_string_):
     except KeyError:
         return "Invalid"
 
-
-search_string = input("Search: ")
-output = search_combo(search_string)
-print(output)
+while True:
+    search_string = input("Search: ").title()
+    output = search_combo(search_string)
+    print(output)
