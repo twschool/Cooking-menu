@@ -27,4 +27,4 @@ def search_combo(seach_string_):
 
 
 search_string = input("Search: ")
-search_combo(seach_string)
+search_combo(search_string)

@@ -17,6 +17,7 @@ menu = {
         "Smoothies": 2.00
     }
 }
+# Code above just defining the menu
 """Iterating through all of the menu items printing 
 the Menu name then all of the items and their prices"""
 while True:

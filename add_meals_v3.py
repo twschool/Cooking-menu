@@ -1,3 +1,5 @@
+"""Add meals v3 third version of add meals component. This component has more comments
+and the code is easier to read"""
 import easygui as eg
 
 # Dictionary of menus with their respective items and prices
