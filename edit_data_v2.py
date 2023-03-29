@@ -2,7 +2,7 @@
 will let the user edit a combo (testing all of the different functions)"""
 
 # This is imported for testing purposes and will be different in the final program
-from delete_meals_function import delete_menu
+from delete_meals_v3 import delete_menu
 from list_to_dict_funtion import list_to_dict
 import easygui as eg
 

@@ -1,7 +1,7 @@
 import easygui as eg
 
-"""Code 'Borrowed' from the add_meals function to be used for
-testing purposes in the edit data v2 (Not a actual component)"""
+"""Code 'Borrowed' from the add_meals function to be used for testing purposes
+in the edit data v2 (Not a actual component but will be used in the final outcome)"""
 def list_to_dict(raw_combo_list):    
     if raw_combo_list is None:
         print("No raw combo list?")
