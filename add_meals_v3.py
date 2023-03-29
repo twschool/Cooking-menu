@@ -64,6 +64,7 @@ def add_meals(menu_):
             new_combo_dictionary = {}
             for meal in sorted_combo:
                 new_combo_dictionary[meal[0]] = meal[1]
+            print(f"Raw combo list: {raw_combo_list}")
             # Return a list with 3 elements (True, dictionary of combo items, combo name) to indicate that the addition of the combo was successful
             return [True, new_combo_dictionary, combo_name.title()]
 
