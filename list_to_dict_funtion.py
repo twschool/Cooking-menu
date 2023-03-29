@@ -9,7 +9,6 @@ def list_to_dict(raw_combo_list):
     else:
         # The first item in the combo list is assumed to be the name of the combo and is popped off
         # combo_name = raw_combo_list.pop(0)
-        print(f"Raw combo list in list to dict: {raw_combo_list}")
         sorted_combo = []
         # Create a sorted list of combo items
         for i in range(0, len(raw_combo_list), 2):

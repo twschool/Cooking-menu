@@ -53,7 +53,6 @@ def edit_data():
         
         enterbox_values = [edit_combo]
         enterbox_fields = []
-        print(dict_edit)
         enterbox_fields.append("Combo name")
         for item in dict_edit.items():
             """Add the existing values to the enterbox so the values
@@ -66,22 +65,15 @@ def edit_data():
             enterbox_fields.append(f"Item {current_index} price")
     
         output = eg.multenterbox(msg=f"Here is the values of the {edit_combo} combo", fields=enterbox_fields, values=enterbox_values)
-        print(f"Output: {output} Fields: {enterbox_fields}")
-        print(f"\nLen output: {len(output)} Len enterbox: {len(enterbox_values)}")
         
         error = ""
         delete_success, menu = delete_menu(menu, edit_combo)
-        print(f"Delete success: {delete_success}")
-        print(f"After function: {menu}")
 
         # If the deletion worked then        
         if delete_success is True:
             combo_name = output.pop(0).title()
-            print(f"OUTPUT: {output}")
             dict_to_add = list_to_dict(output)
-            print(f"Dict to add: {dict_to_add}")
             menu[combo_name] = dict_to_add
-            print(f"Success!: {menu}")
         else:
             print("Error when deleting item")
 
