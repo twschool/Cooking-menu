@@ -1,5 +1,5 @@
-"""First version of the edit data module which
-will let the user edit a combo"""
+"""Second version of the edit data module which
+will let the user edit a combo (testing all of the different functions)"""
 
 # This is imported for testing purposes and will be different in the final program
 from delete_meals_function import delete_menu
@@ -24,15 +24,17 @@ menu = {
     }
 }
 
-all_combos = ""
-for combo_name in menu:
-    all_combos = f"{all_combos}\n{combo_name}"
-
 
 def edit_data():
-    error = ""
     global menu
+
+    error = ""
+    
+
     while True:
+        all_combos = ""
+        for combo_name in menu:
+            all_combos = f"{all_combos}\n{combo_name.title()}"
         enterbox_values = []
         enterbox_fields = []
         # Get the user input on what combo they would like to edit
@@ -64,18 +66,19 @@ def edit_data():
         print(f"Output: {output}")
         error = ""
         print(f"Before function: {menu}")        
-        delete_output = delete_menu(menu, edit_combo)[1]
-        print(f"Delete output: {delete_output}")
-
-        if delete_output[0] is True:
-            menu = delete_output[1]
-        else:
-            print(f"Delete output error: {delete_output}")
-            print("Error when deleting item")
-        combo_name = output.pop(0)
-        dict_to_add = list_to_dict(output)
-        menu[combo_name] = dict_to_add
+        delete_success, menu = delete_menu(menu, edit_combo)
+        print(f"Delete success: {delete_success}")
         print(f"After function: {menu}")
+
+        # If the deletion worked then        
+        if delete_success is True:
+            combo_name = output.pop(0).title()
+            dict_to_add = list_to_dict(output)
+            print(f"Dict to add: {dict_to_add}")
+            menu[combo_name] = dict_to_add
+            print(f"Success!: {menu}")
+        else:
+            print("Error when deleting item")
 
 
 # Main routine
