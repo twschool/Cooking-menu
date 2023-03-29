@@ -65,9 +65,7 @@ def edit_data():
             enterbox_fields.append(f"Item {current_index} price")
         while True:
             output = eg.multenterbox(msg=f"Here is the values of the {edit_combo} combo", fields=enterbox_fields, values=enterbox_values)
-            print(f"Output: {output} Fields: {enterbox_fields}")
-            print(f"\nLen output: {len(out)} Len enterbox: {len(enterbox_values)}")
-            if len(output) != len(enterbox_values):
+            if len(output) + 1 != len(enterbox_values):
                 """If the user has put in empty values this can
                 cause the program to crash so this is some easy error prevention"""
                 eg.msgbox(msg="Error: Some values were left blank")
