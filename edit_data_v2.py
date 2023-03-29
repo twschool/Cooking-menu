@@ -25,15 +25,16 @@ all_combos = ""
 for combo_name in menu:
     all_combos = f"{all_combos}\n{combo_name}"
 
-while True:
+
+def edit_data(): 
     enterbox_values = []
     enterbox_fields = []
     # Get the user input on what combo they would like to edit
     try:
         edit_combo = eg.enterbox(f"{error}All combo names: {all_combos}\nWhat combo would you like to edit?").title()
     except AttributeError:
-        error = "Invalid input (Input not submitted)\n"
-        continue
+        # error = "Invalid input (Input not submitted)\n"
+        return [False]
         # Restarts the loop
     try:
         dict_edit = menu[edit_combo]
