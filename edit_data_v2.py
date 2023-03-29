@@ -45,6 +45,7 @@ def edit_data():
             return [False]
             # Returns back to the main menu when I have that coded
         try:
+            # Defines the dictionary we are about to let the user edit
             dict_edit = menu[edit_combo]
         except KeyError:
             error = "Invalid input (Not a valid combo name)\n"
@@ -62,10 +63,17 @@ def edit_data():
             current_index = list(dict_edit.items()).index(item)
             enterbox_fields.append(f"Item {current_index}")
             enterbox_fields.append(f"Item {current_index} price")
-        output = eg.multenterbox(msg=f"Here is the values of the {edit_combo} combo", fields=enterbox_fields, values=enterbox_values)
-        print(f"Output: {output}")
+        while True:
+            output = eg.multenterbox(msg=f"Here is the values of the {edit_combo} combo", fields=enterbox_fields, values=enterbox_values)
+            print(f"Output: {output} Fields: {enterbox_fields}")
+            print(f"\nLen output: {len(out)} Len enterbox: {len(enterbox_values)}")
+            if len(output) != len(enterbox_values):
+                """If the user has put in empty values this can
+                cause the program to crash so this is some easy error prevention"""
+                eg.msgbox(msg="Error: Some values were left blank")
+            else:
+                break
         error = ""
-        print(f"Before function: {menu}")        
         delete_success, menu = delete_menu(menu, edit_combo)
         print(f"Delete success: {delete_success}")
         print(f"After function: {menu}")
