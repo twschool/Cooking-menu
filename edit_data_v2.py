@@ -60,12 +60,18 @@ def edit_data():
             current_index = list(dict_edit.items()).index(item)
             enterbox_fields.append(f"Item {current_index}")
             enterbox_fields.append(f"Item {current_index} price")
-            menu[combo_name]
         output = eg.multenterbox(msg=f"Here is the values of the {edit_combo} combo", fields=enterbox_fields, values=enterbox_values)
         print(f"Output: {output}")
         error = ""
         print(f"Before function: {menu}")        
-        menu = delete_menu(menu, edit_combo)
+        delete_output = delete_menu(menu, edit_combo)[1]
+        print(f"Delete output: {delete_output}")
+
+        if delete_output[0] is True:
+            menu = delete_output[1]
+        else:
+            print(f"Delete output error: {delete_output}")
+            print("Error when deleting item")
         combo_name = output.pop(0)
         dict_to_add = list_to_dict(output)
         menu[combo_name] = dict_to_add

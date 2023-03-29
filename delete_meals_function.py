@@ -3,7 +3,7 @@ for testing purposes in edit meals v2 (not a actual component)"""
 
 def delete_menu(menu_, combo_input_):
     try:
-        menu_.pop(combo_input_.title())
+        del menu_[combo_input_.title()]
         return [True, menu_]
     except KeyError:
         return [False]
