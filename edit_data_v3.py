@@ -75,7 +75,7 @@ def edit_data():
         output = eg.multenterbox(msg=f"Here is the values of the {edit_combo} combo", fields=enterbox_fields, values=enterbox_values)
         
         error = ""
-        delete_success = delete_menu(edit_combo)
+        delete_success = delete_menu(menu, edit_combo)
 
         # If the deletion worked then        
         if delete_success is True:
@@ -84,7 +84,7 @@ def edit_data():
             menu[combo_name] = dict_to_add
             return [True]
         else:
-            print("Error when deleting item")
+            print(f"Error when deleting item: {delete_success}")
         return
 
 # Main routine
