@@ -1,6 +1,7 @@
-"""Final version v1. This is the first version of the assembled outcome
-This version will be me putting togther all the components to try and make
-a rough outcome of the finished program"""
+"""Final version v2. This is the second version of the assembled outcome
+This version will be cleaning up final program v2 to be a finished outcome
+this includes adding code comments cleaning uo the code and making sure it
+complies with pep8 as well as improving a few things (changing some enterboxes to buttonboxes)."""
 
 # All needed librarys imported
 
@@ -76,6 +77,21 @@ def add_meals():
             # Return a list with 3 elements (True, dictionary of combo items, combo name) to indicate that the addition of the combo was successful
             return [True, new_combo_dictionary, combo_name.title()]
 
+
+def all_combo_names(is_string):
+    global menu
+    if is_string:
+        combo_string = ""
+        for item in menu:
+            combo_string = f"{combo_string}{item[0]}\n"
+        return combo_string
+    if not is_string:
+        combo_list = []
+        for item in menu:
+            combo_list.append(item)
+        return combo_list
+
+
 def search_combo(search_string_):
     global menu
     try:
@@ -103,20 +119,16 @@ def edit_data():
     global menu
 
     error = ""
-    
-
     while True:
-        all_combos = ""
-        for combo_name in menu:
-            all_combos = f"{all_combos}\n{combo_name.title()}"
+        combo_list = all_combo_names(is_string=False)
         enterbox_values = []
         enterbox_fields = []
         # Get the user input on what combo they would like to edit
         try:
-            edit_combo = eg.enterbox(f"{error}All combo names: {all_combos}\nWhat combo would you like to edit?").title()
+            edit_combo = eg.buttonbox(f"{error}What combo would you like to edit?", choices=combo_list)
         except AttributeError:
-            # error = "Invalid input (Input not submitted)\n"
-            return [False]
+            error = "Invalid input (Input not submitted)\n"
+            continue
             # Returns back to the main menu when I have that coded
         try:
             # Defines the dictionary we are about to let the user edit
@@ -148,8 +160,10 @@ def edit_data():
             combo_name = output.pop(0).title()
             dict_to_add = list_to_dict(output)
             menu[combo_name] = dict_to_add
+            return [True]
         else:
             print("Error when deleting item")
+        return
 
 def list_to_dict(raw_combo_list):    
     if raw_combo_list is None:
@@ -168,18 +182,6 @@ def list_to_dict(raw_combo_list):
             new_combo_dictionary[meal[0]] = meal[1]
     return new_combo_dictionary
 
-def all_combo_names(is_string):
-    global menu
-    if is_string:
-        combo_string = ""
-        for item in menu:
-            combo_string = f"{combo_string}{item[0]}\n"
-        return combo_string
-    if not is_string:
-        combo_list = []
-        for item in menu:
-            combo_list.append(item)
-        return combo_list
 
 # Main routine
 while True:
@@ -239,5 +241,3 @@ while True:
         exit("Program exited")
     else:
         print("This should never execute")
-
-
