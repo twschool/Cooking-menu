@@ -60,7 +60,12 @@ def add_meals():
         # Now the user is asked to confirm the values
         msg_ = "Press OK if you are happy with these values or press cancel to abandon adding this list"
         raw_combo_list = eg.multenterbox(fields=fields_, msg=msg_, values=raw_combo_list,title=title_)
-        print(f"Raw combo list: {raw_combo_list}")
+        empty_strings = 0
+        
+        for item in raw_combo_list:
+            if item == '':
+                empty_strings += 1
+        
         if raw_combo_list is None:
             print("Add combo abandoned")
             return [False]
@@ -75,7 +80,6 @@ def add_meals():
             new_combo_dictionary = {}
             for meal in sorted_combo:
                 new_combo_dictionary[meal[0]] = meal[1]
-            print(f"Raw combo list: {raw_combo_list}")
             # Return a list with 3 elements (True, dictionary of combo items, combo name) to indicate that the addition of the combo was successful
             return [True, new_combo_dictionary, combo_name.title()]
 
@@ -206,12 +210,10 @@ while True:
         elif option_chosen == "Search combo":
             title_ = "Search menu"
             combo_list = all_combo_names(is_string=False)
-            print(f"Combo list: {combo_list}")
             msg_ = "Which combo do you want to display"
             to_search = eg.buttonbox(choices=combo_list,msg=msg_,title=title_)
             search_result = search_combo(to_search)
             search_string = ""
-            print(f"Search result: {search_result}")
             for item, price in search_result.items():
                 search_string += f"Item: {item}  \t Price: {price}\n"
             eg.msgbox(msg=f"Search result:\n {search_string}", title=title_)
@@ -234,8 +236,11 @@ while True:
             # True, new_combo_dictionary, combo_name.title()
             adding_output = add_meals()
             if adding_output[0] is False:
-                print("Adding combo error")
+                # Print the error
+                msg_ = f"Error: {new_dict[1]}"
+                eg.msgbox(msg=msg_, title="Error")
             else:
+                # Function must have retured successfully
                 menu[adding_output[2]] = adding_output[1]
 
 
