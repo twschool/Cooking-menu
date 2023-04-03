@@ -35,6 +35,8 @@ def add_meals():
     try:
         # Asks the user how many items they want to add, if not entered the default will be 3
         how_many = int(eg.enterbox(msg="How many items do you want to add?\nPress enter for default of 3", title=title_))
+        if how_many >= 0:
+            raise ValueError
     except ValueError:
         how_many = 3
 

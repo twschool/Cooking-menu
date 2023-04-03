@@ -74,9 +74,10 @@ def edit_data():
             combo_name = output.pop(0).title()
             dict_to_add = list_to_dict(output)
             menu[combo_name] = dict_to_add
+            print(f"Delete success\nNew menu: {menu}")
         else:
             print("Error when deleting item")
 
 
 # Main routine
-print(edit_data())
+edit_data()

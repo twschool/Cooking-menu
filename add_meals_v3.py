@@ -26,6 +26,8 @@ def add_meals(menu_):
     try:
         # Asks the user how many items they want to add, if not entered the default will be 3
         how_many = int(eg.enterbox(msg="How many items do you want to add?\nPress enter for default of 3"))
+        if how_many <= 0:
+            raise ValueError
     except ValueError:
         how_many = 3
 
@@ -41,18 +43,22 @@ def add_meals(menu_):
     
     # If the user presses cancel, raw_combo_list will be None
     if raw_combo_list is None:
-        print("Add combo abandoned")
         # Return a list with a single element (False) to indicate that the addition of the combo was not successful
-        return [False]
+        return [False, "Add combo abandoned"]
     else:
         # If the user presses OK, the list will contain the entered values. 
         # Now the user is asked to confirm the values
         msg_ = "Press OK if you are happy with these values or press cancel to abandon adding this list"
         raw_combo_list = eg.multenterbox(fields=fields_, msg=msg_, values=raw_combo_list)
         print(f"Raw combo list: {raw_combo_list}")
+        empty_strings = 0
+        for item in raw_combo_list:
+            if item == '':
+                empty_strings += 1
+        if empty_strings >= 1:
+            return [False, "Empty string not allowed"]
         if raw_combo_list is None:
-            print("Add combo abandoned")
-            return [False]
+            return [False, "Add combo abandoned"]
         else:
             # The first item in the combo list is assumed to be the name of the combo and is popped off
             combo_name = raw_combo_list.pop(0)
@@ -66,6 +72,7 @@ def add_meals(menu_):
                 new_combo_dictionary[meal[0]] = meal[1]
             print(f"Raw combo list: {raw_combo_list}")
             # Return a list with 3 elements (True, dictionary of combo items, combo name) to indicate that the addition of the combo was successful
+            print("We got to the end :)")
             return [True, new_combo_dictionary, combo_name.title()]
 
 
